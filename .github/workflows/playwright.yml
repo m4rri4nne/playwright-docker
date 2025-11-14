@@ -9,11 +9,6 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - name: Load .env variables 
-      run: | 
-        set -a
-        source .env
-        set +a
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
@@ -22,6 +17,11 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Load .env variables 
+      run: | 
+        set -a
+        source .env
+        set +a
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
