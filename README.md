@@ -20,12 +20,15 @@ A future integration with **Cucumber/Gherkin** may also be added to support BDD-
 
 ```
 📦 playwright-docker
-├── 📁 tests/               # Test cases
-│   ├── example.spec.ts
-│   └── ...
-├── 📁 pages/               # Page Objects (if using POM)
-├── 📁 utils/               # Helpers and utilities
-├── 📁 reports/             # Test reports (Allure output)
+├── 📁 src/
+│   ├──📁 tests/               # Test cases
+│   │     ├── example.spec.ts
+│   │     └── ...
+│   ├── 📁 pages/               # Page Objects
+│   ├── 📁 docs/                # Test cases description
+│   ├── 📁 fixtures/           
+│   ├── 📁 config/              # Config and report configuration
+│   ├── 📁 helpers/             # Helpers and utilitie
 ├── 📄 package.json
 ├── 📄 playwright.config.ts
 ├── 📄 Dockerfile
