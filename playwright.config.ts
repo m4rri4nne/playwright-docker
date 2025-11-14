@@ -19,7 +19,7 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
     baseURL: BASE_URL,
-    headless: true
+    headless: false
   },
 
   /* Configure projects for major browsers */

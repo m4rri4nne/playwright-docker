@@ -1,10 +1,13 @@
 import {Page, Locator} from '@playwright/test';
-export class Dashboard{
+
+type SortType = 'Name Z to A' | 'Name A to Z' | 'Price Lowest to Highest' | 'Prince Highest to Lowest';
+export class Home{
     private readonly page: Page;
     private readonly inventoryItem: Locator;
     private readonly addToCart: Locator; 
     private readonly removeFromCart: Locator; 
     private readonly badgeItemInTheCart: Locator;
+    private readonly sortLocator: Locator; 
 
     constructor(page: Page){
         this.page = page;
@@ -12,6 +15,8 @@ export class Dashboard{
         this.addToCart = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]')
         this.removeFromCart = page.locator('[data-test="remove-sauce-labs-bike-light"]');     
         this.badgeItemInTheCart = page.locator('[data-test="shopping-cart-badge"]');
+        this.sortLocator = page.locator('[data-test="product-sort-container"]'); 
+        
     }
 
     async checkDashboardPage(){
@@ -38,5 +43,25 @@ export class Dashboard{
         await this.addToCart.isVisible(); 
         const removeButtonStatus = await this.removeFromCart.isVisible();
         return removeButtonStatus; 
+    }
+
+    
+    async selectSort(sort: SortType){
+        switch(sort){
+            case 'Name Z to A':
+                await this.sortLocator.selectOption({ label: "Name (Z to A)" });
+                break;
+            case 'Name A to Z':
+                await this.sortLocator.selectOption({label: "Name (A to Z)"});
+                break;
+            case 'Price Lowest to Highest':
+                await this.sortLocator.selectOption({label: "Price (low to high)"});
+                break;
+            case 'Prince Highest to Lowest':
+                await this.sortLocator.selectOption({label: "Price (high to low)"});
+                break;
+            default:
+                break;
+        }
     }
 }

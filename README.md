@@ -54,7 +54,7 @@ The main goals of this project are:
 |----------|---------|-------------|
 | Playwright base setup | ✅ | Core testing framework using Playwright. |
 | Docker integration | 🚧 | Containerized environment for consistent execution. |
-| GitHub Actions workflow | 🚧 | CI pipeline for test automation. |
+| GitHub Actions workflow | 🌀 | CI pipeline for test automation. |
 | Allure reporting | 🚧 | Test result visualization and trend analysis. |
 | Cucumber/Gherkin support | 🔜 | BDD syntax for more readable test scenarios. |
 

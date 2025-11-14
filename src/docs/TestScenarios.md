@@ -2,7 +2,7 @@
 
 Planned scenarios for E-commerce Swag labs to be automated: 
 
-## Login
+## Login - Done
 
 ```gherkin
 Feature: Login
@@ -16,7 +16,7 @@ Feature: Login
     Then they see the warning message
     And  is not logged in 
 ```
-## Add/Remove items from the cart 
+## Add/Remove items from the cart - Done
 
 ```gherkin
 Feature: Add and remove items from the cart 
