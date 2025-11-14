@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
 
 export class Login{
 
@@ -8,6 +8,7 @@ export class Login{
     private readonly passwordInput: Locator;
     private readonly loginButton: Locator;
     private readonly dashboardText: Locator;
+    public readonly errorMessage: Locator;
 
     constructor(page: Page){
         this.page = page;
@@ -16,6 +17,7 @@ export class Login{
         this.passwordInput = page.locator('[data-test="password"]');
         this.loginButton = page.locator('[data-test="login-button"]');
         this.dashboardText = page.locator('[data-test="title"]');
+        this.errorMessage = page.locator('[data-test="error"]');
 
     };
 
@@ -25,6 +27,12 @@ export class Login{
         await this.passwordInput.fill(password);
         await this.loginButton.click();
         await this.page.waitForLoadState('domcontentloaded');
-        return this.dashboardText.isVisible();
+        if(await this.errorMessage.isVisible()){
+            return false;
+        }
+        else{
+            await this.dashboardText.isVisible();
+            return true; 
+        }
     }
 }

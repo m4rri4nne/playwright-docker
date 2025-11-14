@@ -13,6 +13,7 @@ test.describe('Login', ()=>{
     test('Login with invalid credentials', async({page, login})=>{
         await page.goto('/');
         const statusLogin = await login.doLogin('InvalidUser', 'Invalid Password');
-        expect(statusLogin).toBe(true);  
+        expect(statusLogin).toBe(false); 
+        expect(login.errorMessage).toContainText('Epic sadface: Username and password do not match any user in this service');
     })
 })
