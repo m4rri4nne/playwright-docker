@@ -30,7 +30,7 @@ Feature: Add and remove items from the cart
     When they click to remove a item from the cart
     Then number of items on the cart should reduce
 ```
-## Sort products 
+## Sort products - Done
 
 ```gherkin
 Feature: Sort products

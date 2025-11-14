@@ -25,18 +25,22 @@ test.describe('Add/Remove items form the cart', ()=>{
 test.describe('Sort items on Products page', ()=>{
     test('Sort items from A to Z', async({homePage})=>{
         await homePage.checkDashboardPage(); 
-        await homePage.selectSort('Name A to Z'); 
+        await homePage.sortItems('Name A to Z'); 
+        await homePage.checkSort('Name A to Z');
     })
     test('Sort items from Z to A', async({homePage})=>{
         await homePage.checkDashboardPage(); 
-        await homePage.selectSort('Name Z to A'); 
+        await homePage.sortItems('Name Z to A'); 
+        await homePage.checkSort('Name Z to A');
     })
     test('Sort items by Price - Lowest to Highest', async({homePage})=>{
         await homePage.checkDashboardPage(); 
-        await homePage.selectSort('Price Lowest to Highest'); 
+        await homePage.sortItems('Price Lowest to Highest'); 
+        await homePage.checkSort('Price Lowest to Highest');
     })
     test('Sort items by Price - Highest to Lowest', async({homePage})=>{
         await homePage.checkDashboardPage(); 
-        await homePage.selectSort('Prince Highest to Lowest'); 
+        await homePage.sortItems('Price Highest to Lowest'); 
+        await homePage.checkSort('Price Highest to Lowest');
     })
 })

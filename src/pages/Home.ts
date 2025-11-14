@@ -1,6 +1,6 @@
 import {Page, Locator} from '@playwright/test';
+import { SortType, sortValidationMap, sortMap } from '../helpers/sortValidation';
 
-type SortType = 'Name Z to A' | 'Name A to Z' | 'Price Lowest to Highest' | 'Prince Highest to Lowest';
 export class Home{
     private readonly page: Page;
     private readonly inventoryItem: Locator;
@@ -22,7 +22,6 @@ export class Home{
     async checkDashboardPage(){
         const totalElements = await this.inventoryItem.count();
         for(let i = 0; i < totalElements; i++){
-            console.log('Starting validation of elements')
             await this.inventoryItem.nth(i).locator('[data-test="inventory-item-name"]').isVisible();
             await this.inventoryItem.nth(i).locator('[data-test="inventory-item-desc"]').isVisible();
             await this.inventoryItem.nth(i).locator('[data-test="inventory-item-price"]').isVisible();
@@ -37,6 +36,7 @@ export class Home{
         return totalItemsCart; 
     }
 
+
     async removeItemsFromTheCart(){
         await this.removeFromCart.isVisible(); 
         await this.removeFromCart.click();
@@ -46,22 +46,17 @@ export class Home{
     }
 
     
-    async selectSort(sort: SortType){
-        switch(sort){
-            case 'Name Z to A':
-                await this.sortLocator.selectOption({ label: "Name (Z to A)" });
-                break;
-            case 'Name A to Z':
-                await this.sortLocator.selectOption({label: "Name (A to Z)"});
-                break;
-            case 'Price Lowest to Highest':
-                await this.sortLocator.selectOption({label: "Price (low to high)"});
-                break;
-            case 'Prince Highest to Lowest':
-                await this.sortLocator.selectOption({label: "Price (high to low)"});
-                break;
-            default:
-                break;
-        }
+    async sortItems(sort: SortType){
+        const label = sortMap[sort];
+        if (!label) throw new Error(`Sort type "${sort}" invalid.`);
+        await this.sortLocator.selectOption({ label });
+    }
+
+    async checkSort(sort:SortType){
+        const validationMap = sortValidationMap(this.inventoryItem); 
+        const validateFn = validationMap[sort];
+        if (!validateFn) throw new Error(`Sort type "${sort}" invalid.`);
+        const isValid = await validateFn();
+        if (!isValid) throw new Error(`The sort "${sort}" is incorrect`);
     }
 }
