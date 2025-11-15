@@ -6,7 +6,7 @@ export class Home{
     private readonly inventoryItem: Locator;
     private readonly addToCart: Locator; 
     private readonly removeFromCart: Locator; 
-    private readonly badgeItemInTheCart: Locator;
+    public readonly badgeItemInTheCart: Locator;
     private readonly sortLocator: Locator; 
 
     constructor(page: Page){
