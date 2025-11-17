@@ -20,7 +20,7 @@ jobs:
     - name: Load .env variables 
       run: | 
         set -a
-        source .env
+        source .env.example
         set +a
     - name: Run Playwright tests
       run: npx playwright test

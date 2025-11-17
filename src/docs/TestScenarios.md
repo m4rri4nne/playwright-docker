@@ -51,7 +51,7 @@ Feature: Sort products
 ## Buy products 
 
 ```gherkin
-Feature: Buy a products
+Feature: Buy a product
   Scenario: Make checkout with success
     Given the user click on the cart to start the checkout
     When they click to checkout 
