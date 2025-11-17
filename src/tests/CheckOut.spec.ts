@@ -1,9 +1,10 @@
 import { test as login} from '../fixtures/loginFixture';
 import { test as homePage} from '../fixtures/homeFixture';
+import { test as checkoutPage, test as youCartPage} from '../fixtures/checkoutFixture';
 import { mergeTests, expect } from '@playwright/test';
 import { APP_USER_NAME, APP_USER_PASSWORD } from '../config/env';
 
-export const test = mergeTests(login, homePage);
+export const test = mergeTests(login, homePage, checkoutPage, youCartPage);
 
 test.beforeEach(async({login, homePage, page})=>{
     await page.goto('/');
@@ -15,7 +16,15 @@ test.beforeEach(async({login, homePage, page})=>{
 
 
 test.describe('Buy a product', ()=>{
-    test('Make checkout with success', async({homePage})=>{
+    test('Make checkout with success', async({homePage, checkoutPage, youCartPage})=>{
         homePage.badgeItemInTheCart.click()
+        await youCartPage.checkItemsInTheCart();
+        await youCartPage.goToCheckout();
+        await checkoutPage.fillCheckoutInformation('John', 'Doe', '12345');
+        const overviewHeaderText = await checkoutPage.checkOverviewPage();
+        expect(overviewHeaderText).toBe('Checkout: Overview');
+        const {completeText, completeTextDescription} =  await checkoutPage.finishCheckout();
+        expect(completeText).toBe('Thank you for your order!');
+        expect(completeTextDescription).toBe('Your order has been dispatched, and will arrive just as fast as the pony can get there!');
     })
 })
