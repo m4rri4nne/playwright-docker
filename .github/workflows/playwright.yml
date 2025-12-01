@@ -2,9 +2,12 @@
 name: Run Playwright Tests in Docker
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Choose the branch to run the tests on'
+        required: true
+        default: main
 
 jobs:
   playwright-tests:
