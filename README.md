@@ -4,10 +4,6 @@ This project aims to provide a **front-end automated testing setup** using **[Pl
 A future integration with **Cucumber/Gherkin** may also be added to support BDD-style test writing.
 
 
-![Playwright Tests](https://github.com/m4rri4nne/playwright-docker/actions/workflows/run-playwright-tests-in-docker.yml/badge.svg)
-
-[Allure Report](https://m4rri4nne.github.io/playwright-docker/)
-
 ---
 
 ## 🚀 Tech Stack
