@@ -22,7 +22,7 @@ jobs:
       - name: Run Playwright tests
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/workspace \
+            -v /home/runner/work/playwright-docker/playwright-docker:/workspace \
             -w /workspace \
             playwright-tests \
             sh -c "npx playwright test --reporter=line,allure-playwright"
