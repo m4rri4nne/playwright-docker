@@ -18,8 +18,9 @@ jobs:
         run: docker build -t playwright-tests .
 
       - name: Run Playwright tests in Docker
-        run: docker run --rm playwright-tests
-        env:
-          APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
-          APP_USER_PASSWORD: ${{ secrets.APP_USER_PASSWORD }}
-          BASE_URL: ${{ secrets.BASE_URL }}
+        run: |
+          docker run --rm \
+            -e APP_USER_NAME=${{ secrets.APP_USER_NAME }} \
+            -e APP_USER_PASSWORD=${{ secrets.APP_USER_PASSWORD }} \
+            -e BASE_URL=${{ secrets.BASE_URL }} \
+            playwright-tests
