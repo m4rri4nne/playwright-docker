@@ -7,8 +7,15 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 RUN npm install
+# Install Allure Playwright reporter
+RUN npm install --save-dev allure-playwright
+RUN npm install -g allure-commandline
 
 COPY . .
 
-# Run tests
-CMD ["npx", "playwright", "test"]
+# Run tests and generate Allure report
+CMD sh -c "\
+    npm test && \
+    allure generate allure-results --clean -o allure-report && \
+    echo 'Allure report generated ./allure-report' \
+"

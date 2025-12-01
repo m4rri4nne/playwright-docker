@@ -19,5 +19,12 @@ jobs:
       - name: Build Docker image
         run: docker build -t playwright-tests .
 
-      - name: Run Playwright tests
-        run: docker run --rm playwright-tests
+      - name: Run Playwright tests and generate Allure report
+        run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace playwright-tests
+      - name: Publish Allure report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          # branch to publish to
+          publish_branch: gh-pages
