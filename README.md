@@ -6,7 +6,7 @@ A future integration with **Cucumber/Gherkin** may also be added to support BDD-
 
 ![Playwright Tests](https://github.com/m4rri4nne/playwright-docker/actions/workflows/run-playwright-tests-in-docker.yml/badge.svg)
 
-[Allure Report](https://m4rri4nne.github.io/SEU-REPO/)
+[Allure Report](https://m4rri4nne.github.io/playwright-docker/)
 
 ---
 
