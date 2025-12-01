@@ -7,7 +7,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --with-deps
+RUN npm install --save-dev allure-playwright
 
 # Optional: Install Allure CLI globally if required
 RUN npm install -g allure-commandline
