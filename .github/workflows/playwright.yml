@@ -22,4 +22,4 @@ jobs:
         run: docker build -t playwright-tests .
 
       - name: Run Playwright tests and generate Allure report
-        run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace playwright-tests
+        run: docker run --rm playwright-tests
