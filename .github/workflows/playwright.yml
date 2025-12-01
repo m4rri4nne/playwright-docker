@@ -2,9 +2,12 @@
 name: Run Playwright Tests in Docker
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Choose the branch to run the tests on'
+        required: true
+        default: main
 
 jobs:
   playwright-tests:
@@ -20,4 +23,28 @@ jobs:
         run: docker build -t playwright-tests .
 
       - name: Run Playwright tests
-        run: docker run --rm playwright-tests
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            playwright-tests \
+            sh -c "npx playwright test --reporter=line,allure-playwright"
+
+      - name: Generate Allure Report
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            playwright-tests \
+            sh -c "npx allure generate ./allure-results --clean -o ./allure-report"
+
+      - name: Add Allure link to summary
+        run: |
+          echo "### 🔍 Allure Report" >> $GITHUB_STEP_SUMMARY
+          echo "[Open Report](https://$GITHUB_ACTOR.github.io/$GITHUB_REPOSITORY/)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report

@@ -3,6 +3,11 @@
 This project aims to provide a **front-end automated testing setup** using **[Playwright](https://playwright.dev/)**, fully containerized with **Docker**, integrated with **GitHub Actions** for CI/CD, and featuring **[Allure Report](https://docs.qameta.io/allure/)** for test reporting.  
 A future integration with **Cucumber/Gherkin** may also be added to support BDD-style test writing.
 
+
+![Playwright Tests](https://github.com/m4rri4nne/playwright-docker/actions/workflows/run-playwright-tests-in-docker.yml/badge.svg)
+
+[Allure Report](https://m4rri4nne.github.io/playwright-docker/)
+
 ---
 
 ## 🚀 Tech Stack
@@ -56,8 +61,8 @@ The main goals of this project are:
 | Feature | Status | Description |
 |----------|---------|-------------|
 | Playwright base setup | ✅ | Core testing framework using Playwright. |
-| Docker integration | 🚧 | Containerized environment for consistent execution. |
-| GitHub Actions workflow | 🌀 | CI pipeline for test automation. |
+| Docker integration | ✅  | Containerized environment for consistent execution. |
+| GitHub Actions workflow | ✅  | CI pipeline for test automation. |
 | Allure reporting | 🚧 | Test result visualization and trend analysis. |
 | Cucumber/Gherkin support | 🔜 | BDD syntax for more readable test scenarios. |
 
