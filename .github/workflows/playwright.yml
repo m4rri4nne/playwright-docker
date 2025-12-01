@@ -9,9 +9,11 @@ on:
 jobs:
   playwright-tests:
     runs-on: ubuntu-latest
-
+    env:
+      APP_USER_NAME: ${{ secrets.APP_USER_NAME }}
+      APP_USER_PASSWORD: ${{ secrets.APP_USER_PASSWORD }}
+      BASE_URL: ${{ secrets.BASE_URL }}
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -21,10 +23,3 @@ jobs:
 
       - name: Run Playwright tests and generate Allure report
         run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace playwright-tests
-      - name: Publish Allure report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          # branch to publish to
-          publish_branch: gh-pages

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc", 
-    "test": "npx playwright test --reporter=line,allure-playwright"
+    "test": "npx playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",

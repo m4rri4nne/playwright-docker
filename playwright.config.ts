@@ -4,7 +4,7 @@ import{ BASE_URL} from './src/config/env';
 
 export default defineConfig({
   testDir: 'src/tests',
-  globalSetup: require.resolve('./global-setup'),
+  //globalSetup: require.resolve('./global-setup'),
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

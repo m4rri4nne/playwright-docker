@@ -1,6 +1,6 @@
 # 🧪 Playwright Test Automation Project
 
-This project aims to provide a **front-end automated testing setup** using **[Playwright](https://playwright.dev/)**, fully containerized with **Docker**, integrated with **GitHub Actions** for CI/CD, and featuring **[Allure Report](https://docs.qameta.io/allure/)** for test reporting.  
+This project aims to provide a **front-end automated testing setup** using **[Playwright](https://playwright.dev/)**, fully containerized with **Docker**, integrated with **GitHub Actions** for CI/CD.  
 A future integration with **Cucumber/Gherkin** may also be added to support BDD-style test writing.
 
 
@@ -16,7 +16,6 @@ A future integration with **Cucumber/Gherkin** may also be added to support BDD-
 - [Playwright](https://playwright.dev/)
 - [Docker](https://www.docker.com/)
 - [GitHub Actions](https://github.com/features/actions)
-- [Allure Report](https://docs.qameta.io/allure/)
 - *(Optional / Future)* [Cucumber.js](https://github.com/cucumber/cucumber-js)
 
 ---
@@ -51,7 +50,6 @@ The main goals of this project are:
 - ✅ Build a **scalable and maintainable** Playwright test framework.
 - 🐳 Run tests consistently across environments using **Docker**.
 - ⚙️ Automate execution through **GitHub Actions** CI workflows.
-- 📊 Generate detailed reports with **Allure Report**.
 - 🥒 Optionally integrate **Cucumber/Gherkin** for behavior-driven testing.
 
 ---
@@ -63,7 +61,6 @@ The main goals of this project are:
 | Playwright base setup | ✅ | Core testing framework using Playwright. |
 | Docker integration | ✅  | Containerized environment for consistent execution. |
 | GitHub Actions workflow | ✅  | CI pipeline for test automation. |
-| Allure reporting | 🚧 | Test result visualization and trend analysis. |
 | Cucumber/Gherkin support | 🔜 | BDD syntax for more readable test scenarios. |
 
 ---
@@ -85,7 +82,6 @@ Feature: Login
 - Follow the **Page Object Model (POM)** design pattern for better scalability.
 - Keep tests **independent and deterministic**.
 - Avoid hard-coded values; prefer **environment variables**.
-- Use **Allure Report** to monitor test results, performance, and failure trends.
 - Keep CI/CD pipelines fast, isolated, and reproducible.
 
 ---
