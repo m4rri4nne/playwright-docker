@@ -6,10 +6,13 @@ WORKDIR /app
 # Copy of files and installing dependencies
 COPY package.json package-lock.json ./
 
-RUN npm install -g allure-commandline
-
+# Install dependencies
 RUN npm install
 
+# Optional: Install Allure CLI globally if required
+RUN npm install -g allure-commandline
+
+# Copy rest of the application
 COPY . .
 
 # Run tests
